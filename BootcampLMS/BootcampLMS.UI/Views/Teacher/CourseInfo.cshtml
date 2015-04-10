@@ -1,0 +1,135 @@
+﻿@using System.Web.UI.WebControls
+@using BootcampLMS.Models
+@using BootcampLMS.UI.Models
+@model BootcampLMS.UI.Models.CourseInfoViewModel
+@{
+    ViewBag.Title = "Course";
+}
+
+<h5>@Html.ActionLink("Home", "Index") | @Html.ActionLink("Dashboard", "Index") | @Html.ActionLink("Account", "Index")</h5>
+<hr />
+
+<div class="vspace">
+    @Html.Action("CourseNavHeader")
+    <h3>Course Information</h3>
+</div>
+
+<div class="vspace">
+    <div class="row">
+        <div class="table table-responsive table-hover">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-body">
+                            @using (Html.BeginForm("EditCourse", "Teacher", FormMethod.Post))
+                            {
+                                <div class="row vspace-bottom">
+                                    <div class="col-md-5" title="Course Name">
+
+                                        @Html.LabelFor(m => m.CourseInfo.Name, new { @class = "control-label" })
+                                        <div>
+                                            <a tabindex="11">
+                                                @Html.TextBoxFor(m => m.CourseInfo.Name, new { @class = "form-control" })
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4" title="Grade Level">
+                                        @Html.LabelFor(m => m.CourseInfo.GradeLevel, new { @class = "control-label" })
+                                        <div>
+                                            <a tabindex="12">
+                                                @Html.DropDownListFor(m => m.CourseInfo.GradeLevel, UIHelper.DropdownGradeLevels, new { @class = "form-control" })
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" title="Is Archived">
+                                        @Html.LabelFor(m => m.CourseInfo.IsArchived, new { @class = "control-label" })
+                                        <div class="col-md-10">
+                                            <a tabindex="13">
+                                                @Html.CheckBoxFor(m => m.CourseInfo.IsArchived)
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group" title="Subject">
+                                            @Html.LabelFor(m => m.CourseInfo.Department, new { @class = "control-label" })
+                                            <div>
+                                                <a tabindex="14">
+                                                    @Html.TextBoxFor(m => m.CourseInfo.Department, new { @class = "form-control" })
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" title="Start Date">
+                                            @Html.LabelFor(m => m.CourseInfo.StartDate, new { @class = "control-label" })
+                                            <div>
+                                                <a tabindex="15">
+                                                    @Html.TextBoxFor(m => m.CourseInfo.StartDate, new { @class = "form-control" })
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" title="End Date">
+                                            @Html.LabelFor(m => m.CourseInfo.EndDate, new { @class = "control-label" })
+                                            <div>
+                                                <a tabindex="16">
+                                                    @Html.TextBoxFor(m => m.CourseInfo.EndDate, new { @class = "form-control" })
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="form-group" title="Course Description">
+                                            @Html.LabelFor(m => m.CourseInfo.CourseDescription, new { @class = "control-label" })
+                                            <div>
+                                                <a tabindex="17">
+                                                    @Html.TextAreaFor(m => m.CourseInfo.CourseDescription, new { @class = "form-control", style = "height: 182px" })
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn pull-right" title="Save">Save</button>
+                                    <a tabindex="18">
+                                        @Html.HiddenFor(m => m.CourseInfo.CourseId)
+                                        @Html.HiddenFor(m => m.CourseInfo.TeacherId)
+                                    </a>
+                                    <a tabindex="19">
+                                        <div class="pull-right" style="padding: 0px 25px" title="Cancel">
+                                            <h6>@Html.ActionLink("Cancel", "Index")</h6>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Analytics</div>
+                    <div class="panel-body">
+                        <div class="vspace">
+                            <p><b>Total Students: </b>@Model.SudentCount</p>
+
+                        </div>
+                        <div class="vspace">
+                            <p><b>By Grade: </b></p>
+                            @foreach (var grade in Model.GetGrades)
+                            {
+                                <div class="vspace">
+
+                                    @grade.Key-@grade.Value
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

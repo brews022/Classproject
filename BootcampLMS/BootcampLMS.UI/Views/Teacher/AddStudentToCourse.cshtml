@@ -1,0 +1,63 @@
+﻿@using BootcampLMS.UI.Models
+@model BootcampLMS.UI.Models.AddStudentViewModel
+@{
+    Layout = null;
+}
+<div class="vspace">
+    <h3>Add Student</h3>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-body">
+
+            @using (Html.BeginForm("Roster", "Teacher", new { id = Model.CourseId }, FormMethod.Get))
+            {
+                <div class="form-group">
+                    Last Name
+                    @Html.TextBoxFor(m => m.LastName)
+                    Grade
+                    @Html.DropDownListFor(m => m.GradeLevel, UIHelper.DropdownGradeLevels, "Grade Level")
+                    <button>Search</button>
+                </div>
+            }
+
+            <hr />
+            <h4>Results</h4>
+            @if (Model.SearchResults != null)
+            {
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Grade</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var result in Model.SearchResults)
+                        {
+                            <tr>
+                                <td>@result.FirstName</td>
+                                <td>@result.LastName</td>
+                                <td>@result.GradeLevel</td>
+                                <td>
+                                    <form action="/Teacher/AddStudentToCourse/" method="POST">
+                                        <input type="hidden" name="CourseId" id="CourseId" value="@Model.CourseId" />
+                                        <input type="hidden" name="UserId" id="UserId" value="@result.UserId" />
+                                        <button class="btn btn-info">Add</button>
+                                    </form>
+                                </td>
+                                @*<td><button>Add</button></td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+
+        </div>
+    </div>
+</div>
+
+

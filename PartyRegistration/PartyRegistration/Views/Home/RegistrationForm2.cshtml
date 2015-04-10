@@ -1,0 +1,82 @@
+﻿@model PartyRegistration.Models.Rsvpresponse
+
+@{
+    ViewBag.Title = "RegistrationForm2";
+}
+<div class="row">
+    <div class="col-xs-6">
+        <h4>RSVP Form</h4>
+        @using (Html.BeginForm("RegistrationForm", "Home", null, FormMethod.Post, new { id = "rsvpForm" }))
+        {
+
+
+            <hr />
+            
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <label>Your Name</label>
+
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                    
+                </div>
+
+
+                <div class="form-group">
+                    <label>Your Email:</label>
+
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                   
+
+                </div>
+
+                <div class="form-group">
+                    <label>Your Phone</label>
+
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                   
+
+                </div>
+
+                <div class="form-group">
+                    <label>Your Favorite Game</label>
+
+                    @Html.TextBoxFor(model => model.FavoriteGame, new { @class = "form-control" })
+                    
+
+                </div>
+
+                <div class="form-group">
+                    <label>Will You attend?</label>
+
+                    <label>
+                        @Html.RadioButtonFor(model => model.WillAttend, "true")Yes
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(model => model.WillAttend, "false")No
+                    </label>
+                   
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Submit RSVP" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery-validate-default.js"></script>
+    <script src="~/Scripts/rsvpValidation.js"></script>
+
+}

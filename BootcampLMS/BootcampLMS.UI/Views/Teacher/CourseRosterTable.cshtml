@@ -1,0 +1,47 @@
+﻿@model List<BootcampLMS.Models.CourseRoster>
+
+@{
+    Layout = null;
+}
+<div class="vspace">
+    <h3>Course Roster</h3>
+</div>
+
+<div class="vspace">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-body">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th class="col-md-3">First Name</th>
+                            <th class="col-md-3">Last Name</th>
+                            <th class="col-md-5">Email</th>
+                            <th class="col-md-1">Delete</th>
+                        </tr>
+                        <tbody>
+                            @foreach (var results in Model)
+                            {
+                                <tr>
+                                    <td>@results.FirstName</td>
+                                    <td>@results.LastName</td>
+                                    <td>@results.UserId</td>
+                                    <td>
+                                        <form action="/Teacher/DeleteStudentFromClass/" method="POST" class="DeleteForm">
+                                            <input type="hidden" name="CourseId" id="CourseId" value="@results.CourseId" />
+                                            <input type="hidden" name="RosterId" id="RosterId" value="@results.RosterId" />
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                    @*<td><button>Delete</button></td>*@
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

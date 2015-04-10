@@ -1,0 +1,79 @@
+﻿@using BootcampLMS.BLL
+@using BootcampLMS.Models
+@using BootcampLMS.UI.Models
+@model BootcampLMS.UI.Models.GradebookInfoViewModel
+
+@{
+    ViewBag.Title = "Gradebook";
+}
+
+<h5>@Html.ActionLink("Home", "Index") | @Html.ActionLink("Dashboard", "Index") | @Html.ActionLink("Account", "Index")</h5>
+<hr />
+
+<div class="vspace">
+    @Html.Action("CourseNavHeader")
+    <h3>GradeBook</h3>
+</div>
+
+<div class="vspace-bottom">
+    @Html.ActionLink("Add Assignment", "AddAssignment", new { id = Model.CourseId }, new { @class = "btn btn-info" })
+</div>
+
+<div class="vspace">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-body">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last name</th>
+                                    <th>Grade</th>
+                                    @foreach (var results in Model.AssignmentInfo)
+                                    {
+                                        <th>@results.Name</th>
+                                    }
+                                </tr>
+                            </thead>
+                            @foreach (var students in Model.CurrentStudents)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>@students.FirstName</td>
+                                        <td>@students.LastName</td>
+                                        <td>@Grading.Grade(students.TotalEarned, @students.TotalPossible)</td>
+                                        @foreach (var assignment in Model.AssignmentInfo)
+                                        {
+                                            var a = Model.StudentAssignments.FirstOrDefault(x => x.AssignmentId == assignment.AssignmentId && x.RosterId == students.RosterId) ?? new CourseGradebook();
+                                            <td class="grade-editor" data-id="@a.AssignmentTrackerId" data-assignment-id="@assignment.AssignmentId" data-roster-id="@students.RosterId" data-possible-points="@assignment.PointsPossible">
+                                                <span class="display">
+                                                    @(a.AssignmentTrackerId == 0 ? "" : Grading.Percentage(a.TotalEarned, assignment.PointsPossible).ToString("0.00"))
+                                                </span>
+                                                <div class="editor hidden">
+                                                    <input type="number" style="width:50px;" value="@a.TotalEarned" />
+                                                    / @assignment.PointsPossible
+                                                    <button class="btn btn-success btn-xs save" title="Save Changes">
+                                                        <span class="glyphicon glyphicon-check"></span>
+                                                    </button>
+                                                    <button class="btn btn-danger btn-xs cancel" title="Cancel Edit">
+                                                        <span class="glyphicon glyphicon-remove"></span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        }
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/app/gradebook.js"></script>
+}

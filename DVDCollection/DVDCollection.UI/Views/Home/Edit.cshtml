@@ -1,0 +1,101 @@
+﻿@model DVDCollection.UI.Models.Film
+
+<h1>Edit Movie</h1>
+
+<form action="/Home/EditFilm" method="POST" class="form-horizontal">
+    <input type="hidden" name="FilmId" id="FilmId" value="@Model.FilmId" />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-6">
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Rating, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-6">
+            @Html.DropDownList("Rating", new SelectListItem[]
+                {
+                    new SelectListItem {Text = "G", Value = "G"},
+                    new SelectListItem {Text = "PG", Value = "PG"},
+                    new SelectListItem {Text = "PG-13", Value = "PG-13"},
+                    new SelectListItem {Text = "R", Value = "R"},
+                    new SelectListItem {Text = "Unrated", Value = "Unrated"}
+                }, "Rating")
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Year, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-6">
+            @Html.TextBoxFor(m => m.Year, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RunTime, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-6">
+            @Html.TextBoxFor(m => m.RunTime, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Director, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-6">
+            @Html.TextBoxFor(m => m.Director, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Actor, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-6">
+            @Html.TextBoxFor(m => m.Actor, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <button>Save</button>
+    <h5>@Html.ActionLink("Back to List", "Index", "Home")</h5>
+
+</form>
+
+
+
+
+
+
+@*<form action="/Home/EditFilm" method="POST">
+    <input type="hidden" name="FilmId" id="FilmId" value="@Model.FilmId" />
+    <p>
+        <label>Title</label>
+        <input type="text" id="Title" name="Title" value="@Model.Title" />
+    </p>
+    <p>
+        <label>Rating</label>
+        @Html.DropDownList("Rating", new SelectListItem[]
+            {
+                new SelectListItem {Text = "G", Value = "G"},
+                new SelectListItem {Text = "PG", Value = "PG"},
+                new SelectListItem {Text = "PG-13", Value = "PG-13"},
+                new SelectListItem {Text = "R", Value = "R"},
+                new SelectListItem {Text = "Unrated", Value = "Unrated"}
+            }, "Rating")
+    </p>
+    <p>
+        <label>Year</label>
+        <input type="text" id="Year" name="Year" value="@Model.Year" />
+    </p>
+    <p>
+        <label>RunTime</label>
+        <input type="text" id="RunTime" name="RunTime" value="@Model.RunTime" />
+    </p>
+    <p>
+        <label>Director</label>
+        <input type="text" id="Director" name="Director" value="@Model.Director" />
+    </p>
+    <p>
+        <label>Stars</label>
+        <input type="text" id="Actor" name="Actor" value="@Model.Actor" />
+    </p>
+    <button>Save</button>
+
+</form>
+
+<h3>@Html.ActionLink("Back to List", "Index", "Home")</h3>*@

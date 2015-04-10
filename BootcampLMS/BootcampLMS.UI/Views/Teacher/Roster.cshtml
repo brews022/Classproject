@@ -1,0 +1,24 @@
+﻿@using BootcampLMS.Models
+@model BootcampLMS.UI.Models.RosterInfoViewModel
+@{
+    ViewBag.Title = "Roster";
+}
+
+<h5>@Html.ActionLink("Home", "Index") | @Html.ActionLink("Dashboard", "Index") | @Html.ActionLink("Account", "Index")</h5>
+<hr />
+
+<div class="vspace">
+    @Html.Action("CourseNavHeader")
+</div>
+<div class="vspace">
+    <div class="row">
+        <div class="col-md-6">
+            @Html.Action("CourseRosterTable")
+        </div>
+
+        <div class="col-md-6">
+            @Html.Action("AddStudentToCourse")
+        </div>
+
+    </div>
+</div>

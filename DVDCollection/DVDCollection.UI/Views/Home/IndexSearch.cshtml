@@ -1,0 +1,56 @@
+﻿
+@model IEnumerable<DVDCollection.UI.Models.Film>
+
+<h1>Search Results</h1>
+<h3>@Html.ActionLink("Back to home", "Index", "Film")</h3>
+
+@if (Model.Any())
+{
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Rating</th>
+                <th>Year</th>
+                <th>RunTime</th>
+                <th>Director</th>
+                <th>Year</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var film in Model)
+            {
+                <tr>
+                    <td>
+                        @film.Title
+                    </td>
+                    <td>
+                        @film.Rating
+                    </td>
+                    <td>
+                        @film.Year
+                    </td>
+                    <td>
+                        @film.RunTime
+                    </td>
+                    <td>
+                        @film.Director
+                    </td>
+                    <td>
+                        @film.Actor
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Film", new { id = @film.FilmId }, null)
+                    </td>
+                    <td>
+                        <form action="/Dvd/DeleteDvd" method="POST">
+                            <input type="hidden" name="FilmId" id="FilmId" value="@film.FilmId" />
+                            <button>Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

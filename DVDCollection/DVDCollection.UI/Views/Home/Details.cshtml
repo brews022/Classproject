@@ -1,0 +1,46 @@
+﻿@model DVDCollection.UI.Models.Film
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+<div>
+    <h1>DVD Details</h1>
+    <h5>@Html.ActionLink("Back to List", "Index", "Home")</h5>
+    <form action="/Home/Details" method="POST">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Rating</th>
+                    <th>Year</th>
+                    <th>RunTime</th>
+                    <th>Director</th>
+                    <th>Stars</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>@Model.Title</td>
+                    <td>@Model.Rating</td>
+                    <td>@Model.Year</td>
+                    <td>@Model.RunTime</td>
+                    <td>@Model.Director</td>
+                    <td>@Model.Actor</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </form>
+</div>
+</body>
+</html>

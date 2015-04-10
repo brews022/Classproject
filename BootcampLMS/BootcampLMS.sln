@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootcampLMS.UI", "BootcampLMS.UI\BootcampLMS.UI.csproj", "{D188ECEB-C6DD-4DB6-AFF1-94287F480267}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootcampLMS.Data", "BootcampLMS.Data\BootcampLMS.Data.csproj", "{C430370E-938F-4069-803E-D1AF318158BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootcampLMS.BLL", "BootcampLMS.BLL\BootcampLMS.BLL.csproj", "{96659D98-D6C6-400C-9BD1-F13ACE75941F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootcampLMS.Models", "BootcampLMS.Models\BootcampLMS.Models.csproj", "{F20C80C3-D3A4-4A21-9713-E6482944D4E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootcampLMS.Tests", "BootcampLMS.Tests\BootcampLMS.Tests.csproj", "{8E263FA7-7B5C-4F30-838D-992A880A36A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D188ECEB-C6DD-4DB6-AFF1-94287F480267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D188ECEB-C6DD-4DB6-AFF1-94287F480267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D188ECEB-C6DD-4DB6-AFF1-94287F480267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D188ECEB-C6DD-4DB6-AFF1-94287F480267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C430370E-938F-4069-803E-D1AF318158BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C430370E-938F-4069-803E-D1AF318158BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C430370E-938F-4069-803E-D1AF318158BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C430370E-938F-4069-803E-D1AF318158BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96659D98-D6C6-400C-9BD1-F13ACE75941F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96659D98-D6C6-400C-9BD1-F13ACE75941F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96659D98-D6C6-400C-9BD1-F13ACE75941F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96659D98-D6C6-400C-9BD1-F13ACE75941F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F20C80C3-D3A4-4A21-9713-E6482944D4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20C80C3-D3A4-4A21-9713-E6482944D4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20C80C3-D3A4-4A21-9713-E6482944D4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20C80C3-D3A4-4A21-9713-E6482944D4E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E263FA7-7B5C-4F30-838D-992A880A36A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E263FA7-7B5C-4F30-838D-992A880A36A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E263FA7-7B5C-4F30-838D-992A880A36A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E263FA7-7B5C-4F30-838D-992A880A36A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,78 @@
+﻿@using BootcampLMS.UI.Models
+@model BootcampLMS.Models.Assignment
+@{
+    ViewBag.Title = "AddAssignment";
+}
+
+<h5>@Html.ActionLink("Home", "Index") | @Html.ActionLink("Dashboard", "Index") | @Html.ActionLink("Account", "Index")</h5>
+<hr />
+
+<div class="vspace">
+    @Html.Action("CourseNavHeader")
+</div>
+
+<h2>Add Assignment</h2>
+
+@*@using (Html.BeginForm("AddAssignment", "Teacher", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+{
+    
+}*@
+
+<div class="vspace">
+    <div class="table table-responsive">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-body">
+                            @using (Html.BeginForm("AddAssignment", "Teacher", FormMethod.Post))
+                            {
+                                <div class="row vspace-bottom">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.ValidationMessageFor(m => m.Name)
+                                                @Html.LabelFor(m => m.Name, new {@class = "control-label"})
+                                                <div>
+                                                    @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                
+                                                @Html.LabelFor(m => m.PointsPossible, new {@class = "control-label"})
+                                                <div>
+                                                    @Html.TextBoxFor(m => m.PointsPossible, new {@class = "form-control"})
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.DueDate, new { @class = "control-label" })
+                                                <div>
+                                                    @Html.TextBoxFor(m => m.DueDate, new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.ValidationMessageFor(m => m.AssignmentDescription)
+                                                @Html.LabelFor(m => m.AssignmentDescription, new {@class = "control-label"})
+                                                <div>
+                                                    @Html.TextAreaFor(m => m.AssignmentDescription, new {@class = "form-control", style = "height: 182px"})
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn pull-right">Save</button>
+                                        @Html.HiddenFor(m => m.CourseId)
+                                        <div class="pull-right" style="padding: 0px 25px">
+                                            <h6>@Html.ActionLink("Cancel", "Index")</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

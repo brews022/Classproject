@@ -1,0 +1,8 @@
+﻿@model BootcampLMS.Models.Course
+@{
+    Layout = null;
+}
+<div class="vspace">
+    <h2>@Html.DisplayTextFor(m => m.Name)</h2>
+    <h5>@Html.ActionLink("Information", "Course", new { id = Model.CourseId }) | @Html.ActionLink("Roster", "Roster", new { id = Model.CourseId }) | @Html.ActionLink("Gradebook", "Gradebook", new { id = Model.CourseId })</h5>
+</div>

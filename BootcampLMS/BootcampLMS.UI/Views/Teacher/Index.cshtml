@@ -1,0 +1,51 @@
+﻿@model BootcampLMS.UI.Models.TeacherDashboardViewModel
+
+
+@{
+    ViewBag.Title = "TeacherDashboard";
+}
+
+<h5>@Html.ActionLink("Home", "Index") | @Html.ActionLink("Dashboard", "Index") | @Html.ActionLink("Account", "Index")</h5>
+<hr />
+<div class=".vspace">
+    <h2>Teacher Dashboard</h2>
+    <h3>My Classes</h3>
+</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="vspace-bottom">
+            <div class="pull-right">
+                @Html.ActionLink(String.Format("Current ({0})", Model.Current), "Index")
+
+                @Html.ActionLink(String.Format("Archived ({0})", Model.Archived), "Archived")
+            </div>
+            <div class="">
+                @Html.ActionLink("Add Course", "AddCourse", null, new { @class = "btn btn-success" })
+            </div>
+        </div>
+        @if (Model.Courses.Any())
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="list-group">
+                        @foreach (var course in Model.Courses)
+                        {
+                            <a class="list-group-item" href="@Url.Action("Course", new {id = course.CourseId})">
+                                <span class="pull-right">@course.StudentCount students</span>
+                                <span>@course.Name</span>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        
+        else
+        {
+        <p class="text-center">There are no courses currently archived</p>
+        }
+
+
+    </div>
+</div>
+

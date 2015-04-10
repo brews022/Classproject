@@ -1,0 +1,79 @@
+﻿@using System.Web.Services.Protocols
+@model List<DVDCollection.UI.Models.Film>
+
+
+<center><h1>DVD Collection</h1></center>
+
+@*Search features*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Search By</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <form action="/Home/Search" method="POST"/>
+
+                @Html.RadioButton("searchType", "Title")
+                <label>Title</label>
+
+                @Html.RadioButton("searchType", "Director")
+                <label>Director</label>
+
+                @Html.RadioButton("searchType", "Actor")
+                <label>Actor</label>
+
+                <input type="search" name="searchby" placeholder="Search" title="Every second Counts!" />
+
+
+                <button class="btn btn-default" type="submit">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+
+
+<h3>@Html.ActionLink("Add a New DVD", "Add", "Home", new { @class = "btn btn-info btn-lg" })</h3></center>
+@if (Model.Any())
+{
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var film in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(@film.Title, "Details", "Home", new { id = @film.FilmId }, null)
+                </td>
+                <td>@film.Director</td>
+                <td>@film.Year</td>
+                <td>
+                    @Html.ActionLink("Edit Movie", "Edit", "Home", new { id = @film.FilmId }, null)
+                </td>
+
+                <td>
+                    <form action="/Home/DeleteFilm" method="POST">
+                        <input type="hidden" name="FilmId" id="FilmId" value="@film.FilmId" />
+                        <button>Delete</button>
+                    </form>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+}
+else
+{
+    <p>You don't have anything in your colection. Add a Movie!</p>
+}
+
